@@ -1,0 +1,38 @@
+import React, { useState } from "react";
+import Layout from "../components/Layout/Layout";
+import "../styles/HomeStyles.css";
+function Loginn(){
+       const [Email,setEmail]=useState("");
+       const [password,setpassword]=useState("");
+       const [message,setmessage]=useState("");
+
+       function update(){
+        setmessage("Loading...")
+        if((Email=="sri") && (password=="123")){
+            setTimeout(()=>{
+                setmessage("valid")
+            },3000)          
+        }
+        else{
+            setmessage("invalid")
+        }
+       }
+
+    return(
+        <Layout>
+        <h1 className="login">Login page</h1>
+        <div className="div">
+      
+     <label htmlFor="Email" className="Emailname">Email:</label>
+     <input className="Email" type="text" placeholder="Enter your Mail" name="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
+
+     <label htmlFor="passwordname"  className="passwordname">Password:</label>
+     <input  className="password" type="text" placeholder="Enter your password" onChange={(e)=>{setpassword(e.target.value)}}/>
+
+     <button onClick={update}  className="submit">submit</button>
+     <p className="para">{message}</p>
+     </div>
+</Layout>
+    );
+}
+export default Loginn;
